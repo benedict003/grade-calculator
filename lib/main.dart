@@ -205,73 +205,48 @@ class _GradeHomePageState extends State<GradeHomePage> {
     );
   }
 
-  Widget _buildHeader(
-      ColorScheme scheme, bool isMobile, bool isTablet) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        vertical: isMobile ? 25 : 35,
+  Widget _buildInputCard() {
+    return Card(
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
       ),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [scheme.primary, scheme.primaryContainer],
-        ),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        children: [
-          Icon(
-            Icons.school,
-            color: Colors.white,
-            size: isMobile ? 45 : 65,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Grade Calculator',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: isMobile ? 20 : 26,
-              fontWeight: FontWeight.bold,
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          children: [
+            _buildTextField(
+              controller: _nameController,
+              label: 'Student Name',
+              icon: Icons.person,
             ),
-          ),
-        ],
+            const SizedBox(height: 15),
+            _buildTextField(
+              controller: _mathController,
+              label: 'Math Grade',
+              icon: Icons.calculate,
+              isNumber: true,
+            ),
+            const SizedBox(height: 15),
+            _buildTextField(
+              controller: _scienceController,
+              label: 'Science Grade',
+              icon: Icons.science,
+              isNumber: true,
+            ),
+            const SizedBox(height: 15),
+            _buildTextField(
+              controller: _englishController,
+              label: 'English Grade',
+              icon: Icons.menu_book,
+              isNumber: true,
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Widget _buildHeader(
-      ColorScheme scheme, bool isMobile, bool isTablet) {
-    return Container(
-      width: double.infinity,
-      padding: EdgeInsets.symmetric(
-        vertical: isMobile ? 25 : 35,
-      ),
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [scheme.primary, scheme.primaryContainer],
-        ),
-        borderRadius: BorderRadius.circular(25),
-      ),
-      child: Column(
-        children: [
-          Icon(
-            Icons.school,
-            color: Colors.white,
-            size: isMobile ? 45 : 65,
-          ),
-          const SizedBox(height: 8),
-          Text(
-            'Grade Calculator',
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: isMobile ? 20 : 26,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
 
   Widget _buildResultCard(bool isMobile) {
     return Card(
