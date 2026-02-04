@@ -273,3 +273,60 @@ class _GradeHomePageState extends State<GradeHomePage> {
     );
   }
 
+  Widget _buildResultCard(bool isMobile) {
+    return Card(
+      elevation: 5,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text(
+              'Result Summary',
+              style: TextStyle(
+                fontSize: isMobile ? 18 : 22,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            const Divider(),
+            _buildResultRow('Name', _nameController.text, isMobile),
+            _buildResultRow(
+              'Average',
+              _average.toStringAsFixed(2),
+              isMobile,
+            ),
+            _buildResultRow('Grade', _grade, isMobile),
+            _buildResultRow('Status', _status, isMobile),
+          ],
+        ),
+      ),
+    );
+  }
+
+  // Result Row
+  Widget _buildResultRow(String title, String value, bool isMobile) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 6),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Text(
+            title,
+            style: TextStyle(fontSize: isMobile ? 14 : 16),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: isMobile ? 14 : 16,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
