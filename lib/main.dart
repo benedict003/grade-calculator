@@ -85,3 +85,88 @@ class _GradeHomePageState extends State<GradeHomePage> {
       _status = '';
     });
   }
+
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+
+    return Scaffold(
+      backgroundColor: colorScheme.surface,
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text(
+          'Grade Calculator',
+          style: TextStyle(fontWeight: FontWeight.bold),
+        ),
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                colorScheme.primary,
+                colorScheme.primaryContainer,
+              ],
+            ),
+          ),
+        ),
+      ),
+
+      // LayoutBuilder for Responsive Layout
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          bool isMobile = constraints.maxWidth < 600;
+          bool isTablet = constraints.maxWidth >= 600 && constraints.maxWidth < 1000;
+          bool isDesktop = constraints.maxWidth >= 1000;
+
+          double maxWidth = isDesktop
+              ? 900
+              : isTablet
+              ? 700
+              : double.infinity;
+
+          return SingleChildScrollView(
+            child: Center(
+              child: ConstrainedBox(
+                constraints: BoxConstraints(maxWidth: maxWidth),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isMobile ? 16 : 30,
+                    vertical: 20,
+                  ),
+                  child: Column(
+                    children: [
+                      _buildHeader(colorScheme, isMobile, isTablet),
+                      const SizedBox(height: 25),
+
+                      // Responsive Layout (Row on wide screens)
+                      isMobile
+                          ? Column(
+                        children: [
+                          _buildInputCard(),
+                          const SizedBox(height: 20),
+                          _buildButtons(isMobile),
+                        ],
+                      )
+                          : Row(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Expanded(child: _buildInputCard()),
+                          const SizedBox(width: 20),
+                          Expanded(child: _buildButtons(isMobile)),
+                        ],
+                      ),
+
+                      const SizedBox(height: 25),
+
+                      _buildResultCard(isMobile),
+
+                      const SizedBox(height: 20),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          );
+        },
+      ),
+    );
+  }
