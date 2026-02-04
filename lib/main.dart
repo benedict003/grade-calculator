@@ -72,3 +72,16 @@ class _GradeHomePageState extends State<GradeHomePage> {
       _status = status;
     });
   }
+
+  void _clearFields() {
+    _nameController.clear();
+    _mathController.clear();
+    _scienceController.clear();
+    _englishController.clear();
+
+    setState(() {
+      _average = 0.0;
+      _grade = '';
+      _status = '';
+    });
+  }
