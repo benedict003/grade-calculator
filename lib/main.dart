@@ -170,3 +170,38 @@ class _GradeHomePageState extends State<GradeHomePage> {
       ),
     );
   }
+
+  Widget _buildHeader(
+      ColorScheme scheme, bool isMobile, bool isTablet) {
+    return Container(
+      width: double.infinity,
+      padding: EdgeInsets.symmetric(
+        vertical: isMobile ? 25 : 35,
+      ),
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          colors: [scheme.primary, scheme.primaryContainer],
+        ),
+        borderRadius: BorderRadius.circular(25),
+      ),
+      child: Column(
+        children: [
+          Icon(
+            Icons.school,
+            color: Colors.white,
+            size: isMobile ? 45 : 65,
+          ),
+          const SizedBox(height: 8),
+          Text(
+            'Grade Calculator',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: isMobile ? 20 : 26,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
