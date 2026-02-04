@@ -193,7 +193,7 @@ class _GradeHomePageState extends State<GradeHomePage> {
           ),
           const SizedBox(height: 8),
           Text(
-            'Grade Calculator',
+            'Student Grades Performances',
             style: TextStyle(
               color: Colors.white,
               fontSize: isMobile ? 20 : 26,
