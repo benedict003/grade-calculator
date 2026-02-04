@@ -247,6 +247,41 @@ class _GradeHomePageState extends State<GradeHomePage> {
     );
   }
 
+  Widget _buildButtons(bool isMobile) {
+    return Column(
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton.icon(
+            onPressed: _calculateGrade,
+            icon: const Icon(Icons.calculate),
+            label: const Text('Calculate'),
+            style: ElevatedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+          ),
+        ),
+        const SizedBox(height: 12),
+        SizedBox(
+          width: double.infinity,
+          child: OutlinedButton.icon(
+            onPressed: _clearFields,
+            icon: const Icon(Icons.refresh),
+            label: const Text('Reset'),
+            style: OutlinedButton.styleFrom(
+              padding: const EdgeInsets.symmetric(vertical: 14),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(15),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
 
   Widget _buildResultCard(bool isMobile) {
     return Card(
