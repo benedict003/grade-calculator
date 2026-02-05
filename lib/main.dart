@@ -65,7 +65,7 @@ class _GradeHomePageState extends State<GradeHomePage> {
       grade = 'F';
       status = 'Failed';
     }
-
+//jjjjjj
     setState(() {
       _average = avg;
       _grade = grade;
